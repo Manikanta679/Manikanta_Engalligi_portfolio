@@ -34,8 +34,7 @@ const statusKey: Record<ProjectStatus, string> = {
 
 /** Shared typography — identical on every project card. */
 const CARD_TITLE_CLASS = "text-xl leading-snug tracking-tight";
-const CARD_DESCRIPTION_CLASS =
-  "line-clamp-3 font-normal leading-relaxed";
+const CARD_DESCRIPTION_CLASS = "line-clamp-3 font-normal leading-relaxed";
 const CARD_TAGS_CLASS = "flex min-h-[3.25rem] flex-wrap content-start gap-2";
 
 /**
@@ -57,32 +56,35 @@ export function ProjectCard({
 
   const hasGithub = Boolean(project.github && project.github !== "#");
   const hasLiveDemo = Boolean(project.liveDemo && project.liveDemo !== "#");
-  const showExternalLinks =
-    project.slug === "data-analysis-toolkit" && hasGithub && hasLiveDemo;
   const isLatest = project.status === "latest";
 
-  const footerActions = showExternalLinks
-    ? [
-        {
-          label: t("repository"),
-          icon: Github,
-          href: project.github,
-          external: true,
-        },
-        {
-          label: t("liveDemo"),
-          icon: ExternalLink,
-          href: project.liveDemo,
-          external: true,
-        },
-      ]
-    : [
-        {
-          label: t("viewDetails"),
-          icon: ArrowUpRight,
-          onClick: () => setOpen(true),
-        },
-      ];
+  const footerActions = [
+    {
+      label: t("viewDetails"),
+      icon: ArrowUpRight,
+      onClick: () => setOpen(true),
+    },
+    ...(hasGithub
+      ? [
+          {
+            label: t("repository"),
+            icon: Github,
+            href: project.github,
+            external: true,
+          },
+        ]
+      : []),
+    ...(hasLiveDemo
+      ? [
+          {
+            label: t("liveDemo"),
+            icon: ExternalLink,
+            href: project.liveDemo,
+            external: true,
+          },
+        ]
+      : []),
+  ];
 
   return (
     <>
@@ -94,9 +96,9 @@ export function ProjectCard({
         whileHover={{ y: -6 }}
         className="h-full"
       >
-        <Card className="group flex h-full flex-col overflow-hidden border-border/50 bg-card/60 backdrop-blur-md transition-all hover:border-primary/40 hover:shadow-xl supports-[backdrop-filter]:bg-card/50">
+        <Card className="group border-border/50 bg-card/60 hover:border-primary/40 supports-[backdrop-filter]:bg-card/50 flex h-full flex-col overflow-hidden backdrop-blur-md transition-all hover:shadow-xl">
           {/* Image / placeholder */}
-          <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-border/50">
+          <div className="border-border/50 relative aspect-[16/10] w-full overflow-hidden border-b">
             {project.image ? (
               <Image
                 src={project.image}
@@ -107,24 +109,27 @@ export function ProjectCard({
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             ) : (
-              <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-primary/15 via-muted to-background">
-                <Sparkles className="size-12 text-primary/50" />
+              <div className="from-primary/15 via-muted to-background flex h-full w-full items-center justify-center bg-linear-to-br">
+                <Sparkles className="text-primary/50 size-12" />
               </div>
             )}
 
             {/* Subtle overlay keeps badges legible and the covers consistent */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0 bg-linear-to-t from-card/50 via-transparent to-background/25"
+              className="from-card/50 to-background/25 pointer-events-none absolute inset-0 bg-linear-to-t via-transparent"
             />
 
             {/* Overlay badges */}
-            <Badge variant="secondary" className="absolute left-3 top-3 shadow-sm">
+            <Badge
+              variant="secondary"
+              className="absolute top-3 left-3 shadow-sm"
+            >
               {content.category}
             </Badge>
             <Badge
               variant={isLatest ? "default" : "secondary"}
-              className="absolute right-3 top-3 gap-1 shadow-sm"
+              className="absolute top-3 right-3 gap-1 shadow-sm"
             >
               {isLatest ? (
                 <Sparkles className="size-3" />
@@ -139,22 +144,17 @@ export function ProjectCard({
             <CardTitle
               className={cn(
                 CARD_TITLE_CLASS,
-                showExternalLinks &&
-                  "cursor-pointer transition-colors hover:text-primary",
+                "hover:text-primary cursor-pointer transition-colors"
               )}
-              {...(showExternalLinks
-                ? {
-                    role: "button",
-                    tabIndex: 0,
-                    onClick: () => setOpen(true),
-                    onKeyDown: (e: React.KeyboardEvent) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setOpen(true);
-                      }
-                    },
-                  }
-                : {})}
+              role="button"
+              tabIndex={0}
+              onClick={() => setOpen(true)}
+              onKeyDown={(e: React.KeyboardEvent) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setOpen(true);
+                }
+              }}
             >
               {content.title}
             </CardTitle>

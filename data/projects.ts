@@ -29,30 +29,65 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "data-analysis-toolkit",
+    slug: "ice-train-delay-prediction",
     status: "latest",
-    technologies: ["Next.js", "TypeScript", "Python", "Data Analytics", "Tailwind CSS"],
+    technologies: ["Python", "XGBoost", "LightGBM", "Scikit-learn", "Pandas"],
+    github:
+      "https://github.com/Manikanta679/ICE_Train_Delay_Prediction_Machine_Learning_Forecasting_Model-",
+    image: "/images/projects/ice-train-delay-prediction.svg",
+  },
+  {
+    slug: "forestguard",
+    status: "completed",
+    technologies: ["Python", "TensorFlow", "U-Net", "FastAPI", "Sentinel-2"],
+    github:
+      "https://github.com/Manikanta679/ForestGuard_Satellite_Based_Deforestation_Detection-",
+    image: "/images/projects/forestguard.svg",
+  },
+  {
+    slug: "data-analysis-toolkit",
+    status: "completed",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "Data Analytics",
+      "Tailwind CSS",
+    ],
     github: "https://github.com/Manikanta679/Data-Analysis-Toolkit",
     liveDemo: "https://data-analysis-toolkit-eight.vercel.app/",
-    image: "/images/projects/data-analysis-toolkit.png",
+    image: "/images/projects/data-analysis-toolkit.svg",
   },
   {
     slug: "vital-guard",
     status: "completed",
-    technologies: ["ESP8266", "MPU6050", "GPS", "Blynk IoT", "Embedded Systems"],
-    image: "/images/projects/vital-guard.png",
+    technologies: [
+      "ESP8266",
+      "MPU6050",
+      "GPS",
+      "Blynk IoT",
+      "Embedded Systems",
+    ],
+    image: "/images/projects/vital-guard.svg",
+  },
+  {
+    slug: "text-analysis-toolkit",
+    status: "completed",
+    technologies: ["Python", "NLP", "FastAPI", "Sentiment Analysis", "CLI"],
+    github: "https://github.com/Manikanta679/Text_analysis_toolkit",
+    image: "/images/projects/text-analysis-toolkit.svg",
   },
   {
     slug: "video-anomaly-detection",
     status: "completed",
     technologies: ["TensorFlow", "Keras", "OpenCV", "CNN", "Transfer Learning"],
-    image: "/images/projects/video-anomaly-detection.png",
+    image: "/images/projects/video-anomaly-detection.svg",
   },
   {
     slug: "sms-spam-detection",
     status: "completed",
     technologies: ["Python", "Scikit-learn", "NLTK", "TF-IDF", "NLP"],
-    image: "/images/projects/sms-spam-detection.png",
+    image: "/images/projects/sms-spam-detection.svg",
   },
 ];
 

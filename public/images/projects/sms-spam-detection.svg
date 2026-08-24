@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">SMS spam detection illustration</title>
+  <desc id="desc">Messages from a phone pass through an NLP filter and are classified as safe or spam.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#071426"/><stop offset=".52" stop-color="#102a57"/><stop offset="1" stop-color="#090e20"/>
+    </linearGradient>
+    <linearGradient id="funnel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#55dfff" stop-opacity=".48"/><stop offset="1" stop-color="#8f70ff" stop-opacity=".16"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <g opacity=".1" stroke="#79b5ff">
+    <path d="M0 100h800M0 200h800M0 300h800M0 400h800"/>
+    <path d="M100 0v500M200 0v500M300 0v500M400 0v500M500 0v500M600 0v500M700 0v500"/>
+  </g>
+  <g transform="translate(75 60)">
+    <rect width="205" height="380" rx="34" fill="#091327" stroke="#70b5ff" stroke-width="5"/>
+    <rect x="20" y="50" width="165" height="274" rx="18" fill="#102a55"/>
+    <rect x="75" y="22" width="55" height="8" rx="4" fill="#486b9c"/>
+    <g>
+      <path d="M43 84h92q17 0 17 17v30q0 17-17 17H88l-24 20 5-20H43q-17 0-17-17v-30q0-17 17-17Z" fill="#4caee9"/>
+      <path d="M68 180h83q16 0 16 16v27q0 16-16 16h-42l-23 18 5-18H68q-16 0-16-16v-27q0-16 16-16Z" fill="#8d6ee8"/>
+      <path d="M42 270h91q16 0 16 16v21H26v-21q0-16 16-16Z" fill="#477fc8"/>
+    </g>
+    <circle cx="103" cy="351" r="10" fill="#63dfff"/>
+  </g>
+  <g transform="translate(322 143)">
+    <path d="M0 0h188l-57 87v94l-73 36V87Z" fill="url(#funnel)" stroke="#66dfff" stroke-width="5" filter="url(#glow)"/>
+    <g fill="#c7efff"><circle cx="40" cy="39" r="7"/><circle cx="78" cy="25" r="7"/><circle cx="119" cy="47" r="7"/><circle cx="153" cy="27" r="7"/></g>
+    <path d="M74 82h58M88 108h31M96 135h16" stroke="#a9eaff" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <path d="M280 245h44M508 245h54" stroke="#66dfff" stroke-width="5" stroke-dasharray="9 9"/>
+  <path d="m550 225 28 20-28 20Z" fill="#6ee5ff"/>
+  <g transform="translate(622 158)" filter="url(#glow)">
+    <path d="M0 0 78 28v68c0 57-36 92-78 111-42-19-78-54-78-111V28Z" fill="#134b7e" stroke="#69dcff" stroke-width="6"/>
+    <path d="m-36 86 25 25 51-63" fill="none" stroke="#77efbc" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(548 360)">
+    <path d="M0-55 56 44h-112Z" fill="#ff6a7f" fill-opacity=".28" stroke="#ff8295" stroke-width="5"/>
+    <path d="M0-23v30M0 24v2" stroke="#ffdce2" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>

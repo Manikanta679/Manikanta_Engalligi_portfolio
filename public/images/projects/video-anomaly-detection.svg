@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Video anomaly detection illustration</title>
+  <desc id="desc">A surveillance camera analyzes video frames and highlights an anomalous person.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#081328"/><stop offset=".52" stop-color="#112958"/><stop offset="1" stop-color="#090d1f"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#57dfff" stop-opacity=".34"/><stop offset="1" stop-color="#8c70ff" stop-opacity=".03"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <g opacity=".1" stroke="#79b5ff">
+    <path d="M0 100h800M0 200h800M0 300h800M0 400h800"/>
+    <path d="M100 0v500M200 0v500M300 0v500M400 0v500M500 0v500M600 0v500M700 0v500"/>
+  </g>
+  <g transform="translate(60 65)">
+    <path d="M0 35 165 0l32 96L32 132Z" fill="#9bc7ff" stroke="#d5e9ff" stroke-width="4"/>
+    <path d="M25 43 143 18l20 61L45 104Z" fill="#173c70"/>
+    <circle cx="99" cy="61" r="30" fill="#081328" stroke="#5de0ff" stroke-width="8" filter="url(#glow)"/>
+    <circle cx="99" cy="61" r="11" fill="#b3f4ff"/>
+    <path d="m36 130-4 42-21 18" fill="none" stroke="#8ab8ee" stroke-width="13" stroke-linecap="round"/>
+  </g>
+  <path d="m217 138 30 270h467L178 127Z" fill="url(#beam)"/>
+  <g transform="translate(247 110)">
+    <rect width="467" height="298" rx="18" fill="#0a1730" stroke="#67b4ff" stroke-width="5"/>
+    <g stroke="#4977b1" stroke-width="2" opacity=".65">
+      <path d="M156 0v298M312 0v298M0 99h467M0 198h467"/>
+    </g>
+    <g fill="#7aa8df">
+      <circle cx="81" cy="64" r="16"/><path d="M58 136V99q0-20 23-20t23 20v37Z"/>
+      <circle cx="232" cy="152" r="16"/><path d="M209 224v-37q0-20 23-20t23 20v37Z"/>
+      <circle cx="385" cy="64" r="16"/><path d="M362 136V99q0-20 23-20t23 20v37Z"/>
+    </g>
+    <g transform="translate(81 214)" filter="url(#glow)">
+      <rect x="-51" y="-69" width="102" height="133" rx="10" fill="#ff5278" fill-opacity=".18" stroke="#ff7290" stroke-width="5"/>
+      <circle cy="-38" r="17" fill="#ff7893"/>
+      <path d="M-25 42V0q0-22 25-22T25 0v42Z" fill="#ff5e7e"/>
+    </g>
+    <g transform="translate(385 220)">
+      <path d="M0-41 39 28h-78Z" fill="#ffb85c" stroke="#ffd08b" stroke-width="4"/>
+      <path d="M0-15v20M0 17v2" stroke="#41230c" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">ForestGuard satellite deforestation detection illustration</title>
+  <desc id="desc">A satellite observes a forest while an AI segmentation grid highlights land change.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#061a22"/><stop offset=".55" stop-color="#073951"/><stop offset="1" stop-color="#071121"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#42d8ff" stop-opacity=".42"/><stop offset="1" stop-color="#42ff9d" stop-opacity=".04"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <circle cx="690" cy="78" r="120" fill="#11608a" opacity=".2"/>
+  <g transform="translate(120 72) rotate(-12)" filter="url(#glow)">
+    <rect x="88" y="24" width="96" height="62" rx="10" fill="#dbeaff" stroke="#79c9ff" stroke-width="4"/>
+    <circle cx="136" cy="55" r="19" fill="#0c3970" stroke="#55e5ff" stroke-width="5"/>
+    <path d="M88 36 15 8v63l73 5Zm96 0 73-28v63l-73 5Z" fill="#174f89" stroke="#6fbaff" stroke-width="3"/>
+    <path d="M15 30h73M15 52h73M184 30h73M184 52h73" stroke="#68bfff" opacity=".7"/>
+    <path d="M136 86v29" stroke="#c9ecff" stroke-width="5"/>
+  </g>
+  <path d="m220 175-94 253h520L391 175Z" fill="url(#beam)"/>
+  <g transform="translate(90 265)">
+    <path d="M0 165 72 58l56 53 74-109 64 93 62-49 77 93 70-117 92 143Z" fill="#0b573f" stroke="#35db8b" stroke-width="3"/>
+    <g fill="#15845a">
+      <path d="m42 138 32-74 32 74Z"/><path d="m102 148 39-95 39 95Z"/><path d="m188 142 34-86 34 86Z"/>
+      <path d="m273 151 44-110 44 110Z"/><path d="m378 146 37-92 37 92Z"/><path d="m475 150 41-103 41 103Z"/>
+    </g>
+  </g>
+  <g transform="translate(470 245)" fill="none" stroke="#74eaff" stroke-width="3" opacity=".9">
+    <rect width="224" height="156" rx="8" stroke-dasharray="10 7"/>
+    <path d="M56 0v156M112 0v156M168 0v156M0 52h224M0 104h224" opacity=".45"/>
+    <path d="m58 53 52-1 2 52 55 2 1 48H57Z" fill="#ff5d73" fill-opacity=".35" stroke="#ff8b9a"/>
+  </g>
+</svg>

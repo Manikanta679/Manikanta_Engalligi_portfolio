@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState, type FormEvent } from "react";
+import { useCallback, useState, type FormEvent } from "react";
 import { Loader2, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   EmailJSNotConfiguredError,
-  logEmailjsConfigStatus,
+  EmailJSSecurityError,
   sendContactEmail,
 } from "@/lib/emailjs";
 
@@ -22,7 +22,7 @@ type FormErrors = Partial<Record<keyof FormFields, string>>;
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-type SubmitErrorKind = "config" | "generic" | null;
+type SubmitErrorKind = "config" | "security" | "generic" | null;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -40,10 +40,6 @@ export function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<FormStatus>("idle");
   const [submitError, setSubmitError] = useState<SubmitErrorKind>(null);
-
-  useEffect(() => {
-    logEmailjsConfigStatus();
-  }, []);
 
   const validate = useCallback((): FormErrors => {
     const next: FormErrors = {};
@@ -65,10 +61,7 @@ export function ContactForm() {
     return next;
   }, [fields, t]);
 
-  const handleChange = (
-    field: keyof FormFields,
-    value: string
-  ): void => {
+  const handleChange = (field: keyof FormFields, value: string): void => {
     setFields((prev) => ({ ...prev, [field]: value }));
     setErrors((prev) => {
       if (!prev[field]) {
@@ -106,9 +99,13 @@ export function ContactForm() {
       setFields({ name: "", email: "", message: "" });
       setStatus("success");
     } catch (error) {
-      setSubmitError(
-        error instanceof EmailJSNotConfiguredError ? "config" : "generic"
-      );
+      if (error instanceof EmailJSNotConfiguredError) {
+        setSubmitError("config");
+      } else if (error instanceof EmailJSSecurityError) {
+        setSubmitError("security");
+      } else {
+        setSubmitError("generic");
+      }
       setStatus("error");
     }
   };
@@ -143,14 +140,15 @@ export function ContactForm() {
             disabled={isSubmitting}
             className={cn(
               inputClassName,
-              errors.name && "border-destructive/60 focus:border-destructive/60 focus:ring-destructive/30"
+              errors.name &&
+                "border-destructive/60 focus:border-destructive/60 focus:ring-destructive/30"
             )}
           />
           {errors.name ? (
             <p
               id="contact-name-error"
               role="alert"
-              className="text-sm text-destructive"
+              className="text-destructive text-sm"
             >
               {errors.name}
             </p>
@@ -175,14 +173,15 @@ export function ContactForm() {
             disabled={isSubmitting}
             className={cn(
               inputClassName,
-              errors.email && "border-destructive/60 focus:border-destructive/60 focus:ring-destructive/30"
+              errors.email &&
+                "border-destructive/60 focus:border-destructive/60 focus:ring-destructive/30"
             )}
           />
           {errors.email ? (
             <p
               id="contact-email-error"
               role="alert"
-              className="text-sm text-destructive"
+              className="text-destructive text-sm"
             >
               {errors.email}
             </p>
@@ -209,14 +208,15 @@ export function ContactForm() {
             className={cn(
               inputClassName,
               "min-h-[8rem] resize-y",
-              errors.message && "border-destructive/60 focus:border-destructive/60 focus:ring-destructive/30"
+              errors.message &&
+                "border-destructive/60 focus:border-destructive/60 focus:ring-destructive/30"
             )}
           />
           {errors.message ? (
             <p
               id="contact-message-error"
               role="alert"
-              className="text-sm text-destructive"
+              className="text-destructive text-sm"
             >
               {errors.message}
             </p>
@@ -228,7 +228,7 @@ export function ContactForm() {
         <p
           role="status"
           aria-live="polite"
-          className="rounded-lg border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-foreground"
+          className="border-primary/30 bg-primary/10 text-foreground rounded-lg border px-4 py-3 text-sm"
         >
           {t("success")}
         </p>
@@ -238,13 +238,22 @@ export function ContactForm() {
         <p
           role="alert"
           aria-live="assertive"
-          className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+          className="border-destructive/30 bg-destructive/10 text-destructive rounded-lg border px-4 py-3 text-sm"
         >
-          {submitError === "config" ? t("errorConfig") : t("error")}
+          {submitError === "config"
+            ? t("errorConfig")
+            : submitError === "security"
+              ? t("errorSecurity")
+              : t("error")}
         </p>
       ) : null}
 
-      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
+      <Button
+        type="submit"
+        size="lg"
+        disabled={isSubmitting}
+        className="w-full sm:w-auto"
+      >
         {isSubmitting ? (
           <>
             <Loader2 className="animate-spin" aria-hidden />

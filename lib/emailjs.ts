@@ -8,32 +8,12 @@ export class EmailJSNotConfiguredError extends Error {
   }
 }
 
-const EMAILJS_ENV_VARS = [
-  {
-    label: "EmailJS Public Key",
-    get value() {
-      return process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-    },
-  },
-  {
-    label: "EmailJS Service ID",
-    get value() {
-      return process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    },
-  },
-  {
-    label: "EmailJS Template ID",
-    get value() {
-      return process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    },
-  },
-] as const;
-
-export const emailjsConfig = {
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "",
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
-} as const;
+export class EmailJSSecurityError extends Error {
+  constructor() {
+    super("EmailJS non-browser API access is disabled.");
+    this.name = "EmailJSSecurityError";
+  }
+}
 
 export type ContactFormPayload = {
   name: string;
@@ -41,45 +21,30 @@ export type ContactFormPayload = {
   message: string;
 };
 
-export function isEmailjsConfigured(): boolean {
-  const { publicKey, serviceId, templateId } = emailjsConfig;
-  return Boolean(publicKey && serviceId && templateId);
-}
-
-export function logEmailjsConfigStatus(): void {
-  if (process.env.NODE_ENV !== "development") {
-    return;
-  }
-
-  for (const { label, value } of EMAILJS_ENV_VARS) {
-    const status = value ? "loaded" : "missing";
-    const symbol = value ? "✓" : "✗";
-    console.log(`${symbol} ${label} ${status}`);
-  }
-}
-
 export async function sendContactEmail(
   payload: ContactFormPayload
 ): Promise<void> {
-  if (!isEmailjsConfigured()) {
-    throw new EmailJSNotConfiguredError();
-  }
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-  const { publicKey, serviceId, templateId } = emailjsConfig;
-  const emailjs = (await import("@emailjs/browser")).default;
+  if (!response.ok) {
+    const result = (await response.json().catch(() => null)) as {
+      code?: string;
+    } | null;
 
-  emailjs.init({ publicKey });
-
-  try {
-    await emailjs.send(serviceId, templateId, {
-      from_name: payload.name,
-      from_email: payload.email,
-      message: payload.message,
-    });
-  } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.error("[EmailJS] send failed:", error);
+    if (result?.code === "EMAILJS_NOT_CONFIGURED") {
+      throw new EmailJSNotConfiguredError();
     }
-    throw error;
+
+    if (result?.code === "EMAILJS_NON_BROWSER_DISABLED") {
+      throw new EmailJSSecurityError();
+    }
+
+    throw new Error("Unable to send contact message.");
   }
 }

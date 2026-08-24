@@ -52,11 +52,11 @@
       "items": {
         "english": {
           "name": "English",
-          "level": "Professional"
+          "level": "C1 (Professional)"
         },
         "german": {
           "name": "German",
-          "level": "B1 (Currently Learning)"
+          "level": "B1 (Intermediate)"
         },
         "hindi": {
           "name": "Hindi",
@@ -148,6 +148,9 @@
         ],
         "outcome": "Delivered authenticated REST endpoints backed by SQL Server."
       },
+      "fastapi": {
+        "summary": "Built typed Python APIs and web interfaces for the ForestGuard and Text Analysis Toolkit projects."
+      },
       "nodejs": {
         "summary": "Server-side JavaScript for building APIs and full-stack project backends."
       },
@@ -185,6 +188,21 @@
       "dataanalytics": {
         "summary": "Analysing and interpreting data across my Data Analysis Toolkit project, Data Analytics internship certification and Big Data studies."
       },
+      "pandas": {
+        "summary": "Used for cleaning, joining, transforming and analysing structured data in forecasting and analytics workflows."
+      },
+      "numpy": {
+        "summary": "Applied numerical arrays and vectorised operations across machine-learning and geospatial processing pipelines."
+      },
+      "xgboost": {
+        "summary": "Selected as the strongest machine-learning model in my ICE train-delay forecasting study after controlled benchmarking."
+      },
+      "powerbi": {
+        "summary": "Building interactive business-intelligence dashboards and translating data into clear, decision-ready visualisations."
+      },
+      "sql": {
+        "summary": "Writing relational queries for data retrieval, transformation and application-backed analysis across SQL platforms."
+      },
       "sqlserver": {
         "summary": "Designed and integrated relational data storage for backend APIs at Biosoft Health Tech."
       },
@@ -200,6 +218,9 @@
       "blynk": {
         "summary": "Cloud IoT platform used to deliver real-time caregiver alerts in my Vital Guard wearable safety project."
       },
+      "aws": {
+        "summary": "Cloud fundamentals for deploying, securing and operating scalable applications, supported by AWS Cloud Practitioner certification."
+      },
       "git": {
         "summary": "Version control on every project and for collaboration during my internships.",
         "responsibilities": [
@@ -213,10 +234,7 @@
       },
       "docker": {
         "summary": "Containerised applications and streamlined workflows during my DevOps internship at Moka Software.",
-        "responsibilities": [
-          "Containerization",
-          "Development workflow setup"
-        ],
+        "responsibilities": ["Containerization", "Development workflow setup"],
         "outcome": "Standardised local and deployment environments for the team."
       },
       "linux": {
@@ -379,8 +397,192 @@
       "close": "Close"
     },
     "items": {
+      "ice-train-delay-prediction": {
+        "title": "ICE Train Delay Prediction — Machine Learning Forecasting Model",
+        "subtitle": "Time-aware regression pipeline for forecasting Deutsche Bahn ICE arrival delays",
+        "description": "A machine-learning forecasting study combining ICE operational records with historical weather data to predict delay minutes.",
+        "category": "Machine Learning • Forecasting • Data Science",
+        "overview": "An end-to-end machine-learning capstone that forecasts ICE train delays in minutes from Deutsche Bahn operational data and Open-Meteo weather observations. The study uses a leakage-safe, time-based evaluation across July–September 2024 and compares naive, linear, bagging and boosting models.",
+        "features": [
+          "Automated acquisition and preparation of ICE operational records",
+          "Station-level integration with hourly historical weather data",
+          "Time-based train/test split that reflects real forecasting conditions",
+          "Comparison of linear, Random Forest, Gradient Boosting, XGBoost and LightGBM models",
+          "Operational-only versus weather-enriched ablation analysis",
+          "Reproducible nine-notebook workflow with saved model-selection reports"
+        ],
+        "architecture": [
+          {
+            "name": "Data Acquisition",
+            "description": "Downloads monthly Deutsche Bahn Parquet data and filters the workflow to ICE services."
+          },
+          {
+            "name": "Data Integration",
+            "description": "Joins station and planned-departure records with hourly Open-Meteo observations."
+          },
+          {
+            "name": "Feature Pipeline",
+            "description": "Cleans timestamps, engineers operational and weather features, and stores typed Parquet datasets."
+          },
+          {
+            "name": "Forecasting Layer",
+            "description": "Benchmarks regularised linear models, Random Forest and gradient-boosting ensembles."
+          }
+        ],
+        "stack": [
+          {
+            "label": "Data Science",
+            "items": ["Python", "Pandas", "NumPy", "Scikit-learn"]
+          },
+          {
+            "label": "Machine Learning",
+            "items": [
+              "XGBoost",
+              "LightGBM",
+              "Random Forest",
+              "Gradient Boosting"
+            ]
+          },
+          {
+            "label": "Data Sources",
+            "items": ["Deutsche Bahn Data", "Open-Meteo", "OpenStreetMap"]
+          },
+          {
+            "label": "Workflow",
+            "items": ["Jupyter Notebook", "Parquet", "Joblib", "MAE"]
+          }
+        ],
+        "modules": [
+          {
+            "name": "Acquisition & Cleaning",
+            "description": "Builds consistent monthly ICE datasets and removes cancelled or unusable records."
+          },
+          {
+            "name": "Weather Enrichment",
+            "description": "Geocodes stations and aligns railway observations with hourly weather."
+          },
+          {
+            "name": "Model Benchmarking",
+            "description": "Evaluates baseline, linear, bagging and boosting models using mean absolute error."
+          },
+          {
+            "name": "Final Pipeline Export",
+            "description": "Persists the selected XGBoost pipeline and machine-readable experiment summaries."
+          }
+        ],
+        "contributions": [
+          "Built a reproducible data pipeline spanning 377,000+ train-stop observations.",
+          "Designed a time-based evaluation strategy to prevent future-data leakage.",
+          "Benchmarked multiple model families against transparent naive baselines.",
+          "Measured the incremental value of weather features through controlled ablation.",
+          "Documented research questions, model selection and limitations in reproducible notebooks."
+        ],
+        "challenges": [
+          "Integrating large railway and weather datasets across station and time keys.",
+          "Preventing temporal leakage while retaining operationally useful features.",
+          "Interpreting why a robust naive median remained difficult to outperform."
+        ],
+        "outcomes": [
+          "Selected XGBoost with weather as the strongest machine-learning model at 10.31 minutes MAE.",
+          "Established that summer weather offered only a small predictive improvement.",
+          "Produced an honest, reproducible benchmark in which the 9.48-minute naive median remained best overall."
+        ]
+      },
+      "forestguard": {
+        "title": "ForestGuard — Satellite-Based Deforestation Detection",
+        "subtitle": "AI-powered forest monitoring with Sentinel-2 imagery and U-Net segmentation",
+        "description": "A full-stack geospatial AI application that detects, compares and reports deforestation from multi-band satellite imagery.",
+        "category": "Artificial Intelligence • Geospatial • Full Stack",
+        "overview": "ForestGuard is a local decision-support platform that applies a trained TensorFlow/Keras U-Net model to four-band Sentinel-2 GeoTIFFs. It calculates NDVI, segments deforestation per pixel, compares two observation dates and exports geospatial results and PDF reports.",
+        "features": [
+          "Single-date deforestation segmentation and affected-area estimation",
+          "Two-date comparison for new, persistent and potentially recovered areas",
+          "NDVI, probability-map and binary-mask visualisation",
+          "GeoTIFF, PNG, JSON and PDF result exports",
+          "Strict raster, band, alignment and model-availability validation",
+          "Background analysis jobs with clear progress and failure states"
+        ],
+        "architecture": [
+          {
+            "name": "Frontend",
+            "description": "React, TypeScript, Vite and Tailwind CSS provide the upload, analysis and reporting workflow."
+          },
+          {
+            "name": "API Layer",
+            "description": "FastAPI coordinates validation, inference, comparisons, background jobs and downloads."
+          },
+          {
+            "name": "AI Inference",
+            "description": "A TensorFlow/Keras U-Net processes tiled 256×256 raster inputs and stitches pixel-level predictions."
+          },
+          {
+            "name": "Geospatial Processing",
+            "description": "Raster services preserve spatial metadata, calculate NDVI and estimate affected land area."
+          }
+        ],
+        "stack": [
+          {
+            "label": "AI & Geospatial",
+            "items": [
+              "TensorFlow",
+              "Keras",
+              "U-Net",
+              "Sentinel-2",
+              "NDVI",
+              "GeoTIFF"
+            ]
+          },
+          {
+            "label": "Backend",
+            "items": ["Python", "FastAPI", "Uvicorn", "Rasterio"]
+          },
+          {
+            "label": "Frontend",
+            "items": ["React", "TypeScript", "Vite", "Tailwind CSS"]
+          },
+          {
+            "label": "Reporting & Quality",
+            "items": ["Matplotlib", "Pillow", "ReportLab", "Pytest"]
+          }
+        ],
+        "modules": [
+          {
+            "name": "Raster Validation",
+            "description": "Rejects incompatible files and verifies bands, projection and spatial alignment."
+          },
+          {
+            "name": "Prediction Service",
+            "description": "Preprocesses, tiles and stitches imagery for memory-efficient U-Net inference."
+          },
+          {
+            "name": "Change Comparison",
+            "description": "Calculates NDVI change and distinguishes new, persistent and possible recovery areas."
+          },
+          {
+            "name": "Report Generation",
+            "description": "Creates visual previews, geospatial outputs, JSON summaries and downloadable PDF reports."
+          }
+        ],
+        "contributions": [
+          "Designed the end-to-end architecture across frontend, API and geospatial AI services.",
+          "Implemented model-backed segmentation without mocked production predictions.",
+          "Built single-date and aligned two-date analysis workflows.",
+          "Added explicit validation and honest failure states for invalid imagery or unavailable models.",
+          "Created 29 backend tests covering mathematics, raster logic, inference tiling and API behaviour."
+        ],
+        "challenges": [
+          "Processing large geospatial rasters within practical memory limits.",
+          "Maintaining spatial correctness across two-date comparisons and area calculations.",
+          "Communicating model and dataset limitations without overstating scientific certainty."
+        ],
+        "outcomes": [
+          "A working full-stack prototype for repeatable satellite-based forest monitoring.",
+          "Downloadable decision-support outputs that preserve geospatial context.",
+          "A tested, modular foundation for future cloud deployment and model improvement."
+        ]
+      },
       "data-analysis-toolkit": {
-        "title": "Data Analysis Toolkit",
+        "title": "Data Analysis Toolkit — Automated Data Analysis and Visualisation Platform",
         "subtitle": "Full-stack, AI-assisted analytics platform for interactive data exploration",
         "description": "A modular full-stack toolkit for statistical analysis, data visualization and AI-assisted insights through interactive dashboards.",
         "category": "Full Stack • AI • Data Analytics",
@@ -422,7 +624,12 @@
           },
           {
             "label": "Analytics & AI",
-            "items": ["Python", "Machine Learning", "Scikit-learn", "Data Analytics"]
+            "items": [
+              "Python",
+              "Machine Learning",
+              "Scikit-learn",
+              "Data Analytics"
+            ]
           },
           {
             "label": "Tools",
@@ -471,7 +678,7 @@
         ]
       },
       "vital-guard": {
-        "title": "Vital Guard – IoT Based Safety System for Seniors and Disabled",
+        "title": "Vital Guard — IoT-Based Fall Detection and Alert System",
         "subtitle": "Wearable IoT device with automatic fall detection and real-time caregiver alerts",
         "description": "An IoT wearable that detects falls using ESP8266 and MPU6050, then sends real-time, GPS-located alerts to caregivers via Blynk.",
         "category": "IoT • Embedded Systems • Healthcare",
@@ -521,7 +728,11 @@
           },
           {
             "label": "Concepts",
-            "items": ["Embedded Systems", "Threshold-based Detection", "Real-time Alerts"]
+            "items": [
+              "Embedded Systems",
+              "Threshold-based Detection",
+              "Real-time Alerts"
+            ]
           }
         ],
         "modules": [
@@ -569,6 +780,97 @@
           "Completed as my Final Year Project, demonstrating end-to-end IoT engineering."
         ]
       },
+      "text-analysis-toolkit": {
+        "title": "Text Analysis Toolkit",
+        "subtitle": "Dependency-free Python toolkit for reusable text analysis and reporting",
+        "description": "A production-ready Python package for tokenisation, frequency analysis, sentiment scoring and structured report generation.",
+        "category": "Natural Language Processing • Python",
+        "overview": "Text Analysis Toolkit is a modular Python package and optional FastAPI web application for analysing text without external core dependencies. It exposes reusable APIs and a CLI for tokenisation, n-grams, frequency statistics, lexicon-based sentiment and text or JSON reports.",
+        "features": [
+          "Word and sentence tokenisation with punctuation and stopword controls",
+          "N-gram generation and configurable frequency analysis",
+          "Lexicon-based sentiment scoring with custom vocabulary support",
+          "Plain-text and JSON report generation",
+          "Command-line interface for files and inline text",
+          "Optional interactive FastAPI web interface"
+        ],
+        "architecture": [
+          {
+            "name": "Core Package",
+            "description": "Independent tokenizer, frequency, sentiment and reporting modules use only Python's standard library."
+          },
+          {
+            "name": "Analysis Facade",
+            "description": "A unified TextAnalyzer API composes the modules into a consistent end-to-end workflow."
+          },
+          {
+            "name": "Interfaces",
+            "description": "The toolkit can be used through Python APIs, a CLI or an optional FastAPI web application."
+          },
+          {
+            "name": "Quality Layer",
+            "description": "A comprehensive unittest suite verifies individual modules and integrated analysis behaviour."
+          }
+        ],
+        "stack": [
+          {
+            "label": "Core",
+            "items": ["Python", "Standard Library", "NLP"]
+          },
+          {
+            "label": "Analysis",
+            "items": [
+              "Tokenisation",
+              "N-grams",
+              "Sentiment Analysis",
+              "Term Frequency"
+            ]
+          },
+          {
+            "label": "Interfaces",
+            "items": ["CLI", "FastAPI", "Jinja2", "HTML", "CSS", "JavaScript"]
+          },
+          {
+            "label": "Quality",
+            "items": ["unittest", "46+ Tests", "JSON Reports"]
+          }
+        ],
+        "modules": [
+          {
+            "name": "Tokenizer",
+            "description": "Splits words and sentences, removes punctuation or stopwords, and produces n-grams."
+          },
+          {
+            "name": "Frequency Analyzer",
+            "description": "Calculates counts, term frequencies, relative frequencies and ranked words."
+          },
+          {
+            "name": "Sentiment Analyzer",
+            "description": "Scores text from −1 to +1 using built-in or custom positive and negative lexicons."
+          },
+          {
+            "name": "Report Generator",
+            "description": "Produces readable text summaries and structured JSON output."
+          }
+        ],
+        "contributions": [
+          "Co-developed a clean, modular package with zero dependencies in its core.",
+          "Implemented reusable text-processing and analysis interfaces.",
+          "Provided CLI and web entry points for different usage contexts.",
+          "Added sample datasets, comprehensive documentation and 46+ automated tests.",
+          "Designed report outputs suitable for both human review and downstream processing."
+        ],
+        "challenges": [
+          "Keeping the core package dependency-free without sacrificing useful NLP features.",
+          "Designing consistent behaviour across API, CLI and web interfaces.",
+          "Making lexicon-based sentiment transparent and extensible."
+        ],
+        "outcomes": [
+          "A reusable toolkit that runs in minimal Python environments.",
+          "Multiple access modes for developers, command-line users and web users.",
+          "A tested foundation that can be extended with additional NLP techniques."
+        ]
+      },
       "video-anomaly-detection": {
         "title": "Video Anomaly Detection using Transfer Learning & Fine-Tuning",
         "subtitle": "Deep-learning system for frame-level anomaly detection in surveillance video",
@@ -612,7 +914,13 @@
           },
           {
             "label": "Deep Learning",
-            "items": ["TensorFlow", "Keras", "CNN", "Transfer Learning", "Fine-Tuning"]
+            "items": [
+              "TensorFlow",
+              "Keras",
+              "CNN",
+              "Transfer Learning",
+              "Fine-Tuning"
+            ]
           },
           {
             "label": "Computer Vision",
@@ -831,7 +1139,7 @@
   },
   "resume": {
     "title": "Resume",
-    "description": "Want the full overview of my experience, education and projects? Download my resume as a PDF.",
+    "description": "Want the full overview of my experience, education and projects? Download my current resume.",
     "download": "Download Resume"
   },
   "contact": {
@@ -859,6 +1167,7 @@
       "success": "Thank you! Your message has been sent successfully.",
       "error": "Something went wrong. Please try again.",
       "errorConfig": "EmailJS has not been configured yet. Please add your EmailJS credentials to .env.local.",
+      "errorSecurity": "Email delivery is awaiting one EmailJS security setting. Please use Email Me for now.",
       "validation": {
         "nameRequired": "Name is required",
         "emailRequired": "Email is required",

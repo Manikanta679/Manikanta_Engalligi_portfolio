@@ -45,7 +45,10 @@ export const skillCategories: SkillCategory[] = [
         name: "Python",
         usage: {
           projects: [
+            "ice-train-delay-prediction",
+            "forestguard",
             "data-analysis-toolkit",
+            "text-analysis-toolkit",
             "video-anomaly-detection",
             "sms-spam-detection",
           ],
@@ -87,7 +90,10 @@ export const skillCategories: SkillCategory[] = [
       {
         key: "react",
         name: "React.js",
-        usage: { experience: ["biosoft"], usedWith: ["JavaScript", "REST APIs"] },
+        usage: {
+          experience: ["biosoft"],
+          usedWith: ["JavaScript", "REST APIs"],
+        },
       },
       {
         key: "nextjs",
@@ -139,6 +145,14 @@ export const skillCategories: SkillCategory[] = [
         },
       },
       {
+        key: "fastapi",
+        name: "FastAPI",
+        usage: {
+          projects: ["forestguard", "text-analysis-toolkit"],
+          usedWith: ["Python", "REST APIs"],
+        },
+      },
+      {
         key: "nodejs",
         name: "Node.js",
         usage: {
@@ -171,7 +185,12 @@ export const skillCategories: SkillCategory[] = [
         key: "ml",
         name: "Machine Learning",
         usage: {
-          projects: ["sms-spam-detection", "video-anomaly-detection"],
+          projects: [
+            "ice-train-delay-prediction",
+            "forestguard",
+            "sms-spam-detection",
+            "video-anomaly-detection",
+          ],
           usedWith: ["Python", "Scikit-learn", "TensorFlow"],
         },
       },
@@ -187,7 +206,7 @@ export const skillCategories: SkillCategory[] = [
         key: "tensorflow",
         name: "TensorFlow",
         usage: {
-          projects: ["video-anomaly-detection"],
+          projects: ["forestguard", "video-anomaly-detection"],
           usedWith: ["Python", "OpenCV", "Deep Learning"],
         },
       },
@@ -195,7 +214,7 @@ export const skillCategories: SkillCategory[] = [
         key: "opencv",
         name: "OpenCV",
         usage: {
-          projects: ["video-anomaly-detection"],
+          projects: ["forestguard", "video-anomaly-detection"],
           usedWith: ["Python", "TensorFlow"],
         },
       },
@@ -203,7 +222,7 @@ export const skillCategories: SkillCategory[] = [
         key: "scikit",
         name: "Scikit-learn",
         usage: {
-          projects: ["sms-spam-detection"],
+          projects: ["ice-train-delay-prediction", "sms-spam-detection"],
           usedWith: ["Python", "NLP"],
         },
       },
@@ -211,8 +230,40 @@ export const skillCategories: SkillCategory[] = [
         key: "nlp",
         name: "NLP",
         usage: {
-          projects: ["sms-spam-detection"],
+          projects: ["text-analysis-toolkit", "sms-spam-detection"],
           usedWith: ["Python", "Scikit-learn"],
+        },
+      },
+      {
+        key: "pandas",
+        name: "Pandas",
+        usage: {
+          projects: ["ice-train-delay-prediction", "data-analysis-toolkit"],
+          usedWith: ["Python", "NumPy", "Scikit-learn"],
+        },
+      },
+      {
+        key: "numpy",
+        name: "NumPy",
+        usage: {
+          projects: ["ice-train-delay-prediction", "forestguard"],
+          usedWith: ["Python", "Pandas", "TensorFlow"],
+        },
+      },
+      {
+        key: "xgboost",
+        name: "XGBoost",
+        usage: {
+          projects: ["ice-train-delay-prediction"],
+          usedWith: ["Python", "Pandas", "Scikit-learn"],
+        },
+      },
+      {
+        key: "powerbi",
+        name: "Power BI",
+        usage: {
+          contexts: ["academic"],
+          usedWith: ["SQL", "Data Analytics"],
         },
       },
       {
@@ -237,6 +288,15 @@ export const skillCategories: SkillCategory[] = [
   {
     categoryKey: "databases",
     skills: [
+      {
+        key: "sql",
+        name: "SQL",
+        usage: {
+          experience: ["biosoft"],
+          contexts: ["academic"],
+          usedWith: ["SQL Server", "MySQL", "PostgreSQL", "Power BI"],
+        },
+      },
       {
         key: "sqlserver",
         name: "SQL Server",
@@ -272,6 +332,14 @@ export const skillCategories: SkillCategory[] = [
   {
     categoryKey: "tools",
     skills: [
+      {
+        key: "aws",
+        name: "AWS",
+        usage: {
+          contexts: ["academic"],
+          usedWith: ["Docker", "Linux", "CI/CD"],
+        },
+      },
       {
         key: "git",
         name: "Git",

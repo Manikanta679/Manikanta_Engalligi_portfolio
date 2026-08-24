@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Vital Guard fall detection illustration</title>
+  <desc id="desc">A wearable sensor detects a fall and sends a GPS emergency alert to a caregiver.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#07172a"/><stop offset=".52" stop-color="#10305c"/><stop offset="1" stop-color="#090e20"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#70b8ff"/><stop offset="1" stop-color="#4669c8"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <g opacity=".1" stroke="#7eb5ff">
+    <path d="M0 100h800M0 200h800M0 300h800M0 400h800"/>
+    <path d="M100 0v500M200 0v500M300 0v500M400 0v500M500 0v500M600 0v500M700 0v500"/>
+  </g>
+  <g transform="translate(95 76) rotate(-8 150 175)">
+    <rect x="105" y="0" width="90" height="350" rx="44" fill="url(#band)" opacity=".85"/>
+    <rect x="48" y="79" width="204" height="212" rx="52" fill="#091327" stroke="#72b8ff" stroke-width="6"/>
+    <rect x="72" y="103" width="156" height="164" rx="34" fill="#102d58"/>
+    <path d="M93 188h27l14-36 25 70 18-49 13 15h18" fill="none" stroke="#52e1ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+    <circle cx="150" cy="242" r="8" fill="#69e8bc"/>
+  </g>
+  <path d="M372 252h88" stroke="#67d9ff" stroke-width="5" stroke-dasharray="10 10" filter="url(#glow)"/>
+  <path d="m444 232 29 20-29 20Z" fill="#75e1ff"/>
+  <g transform="translate(478 78)">
+    <rect width="230" height="330" rx="32" fill="#0a162d" stroke="#6caeff" stroke-width="5"/>
+    <rect x="22" y="48" width="186" height="250" rx="18" fill="#102955"/>
+    <rect x="80" y="18" width="70" height="9" rx="5" fill="#456a9f"/>
+    <g transform="translate(115 127)" filter="url(#glow)">
+      <path d="M0-57c35 0 62 27 62 61 0 45-62 100-62 100S-62 49-62 4c0-34 27-61 62-61Z" fill="#ff647d" stroke="#ff9cac" stroke-width="4"/>
+      <circle r="23" fill="#102955"/>
+      <path d="M-10 0h20M0-10v20" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+    </g>
+    <rect x="52" y="251" width="126" height="26" rx="13" fill="#ff647d" opacity=".9"/>
+    <path d="M74 264h82" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(365 365)">
+    <circle r="42" fill="#102955" stroke="#62dfff" stroke-width="4"/>
+    <path d="M-23 5c12-40 34-40 46 0M-24 5h48" fill="none" stroke="#73edbd" stroke-width="6" stroke-linecap="round"/>
+    <circle cy="-18" r="8" fill="#73edbd"/>
+  </g>
+</svg>

@@ -16,9 +16,7 @@ export type Language = {
 export const LANGUAGE_SEGMENTS = 10;
 
 export const languages: Language[] = [
-  { key: "english", value: 100 },
+  { key: "english", value: 90 },
   { key: "german", value: 60 },
-  { key: "hindi", value: 90 },
-  { key: "telugu", value: 90 },
   { key: "kannada", value: 100 },
 ];
