@@ -45,6 +45,7 @@ export const skillCategories: SkillCategory[] = [
         name: "Python",
         usage: {
           projects: [
+            "o2c-leakage-detection",
             "ice-train-delay-prediction",
             "forestguard",
             "data-analysis-toolkit",
@@ -238,7 +239,11 @@ export const skillCategories: SkillCategory[] = [
         key: "pandas",
         name: "Pandas",
         usage: {
-          projects: ["ice-train-delay-prediction", "data-analysis-toolkit"],
+          projects: [
+            "o2c-leakage-detection",
+            "ice-train-delay-prediction",
+            "data-analysis-toolkit",
+          ],
           usedWith: ["Python", "NumPy", "Scikit-learn"],
         },
       },
@@ -262,6 +267,7 @@ export const skillCategories: SkillCategory[] = [
         key: "powerbi",
         name: "Power BI",
         usage: {
+          projects: ["o2c-leakage-detection"],
           contexts: ["academic"],
           usedWith: ["SQL", "Data Analytics"],
         },
@@ -270,9 +276,9 @@ export const skillCategories: SkillCategory[] = [
         key: "dataanalytics",
         name: "Data Analytics",
         usage: {
-          projects: ["data-analysis-toolkit"],
+          projects: ["o2c-leakage-detection", "data-analysis-toolkit"],
           contexts: ["academic"],
-          usedWith: ["Python", "Next.js"],
+          usedWith: ["Python", "SQL", "Power BI"],
         },
       },
       {
@@ -292,9 +298,10 @@ export const skillCategories: SkillCategory[] = [
         key: "sql",
         name: "SQL",
         usage: {
+          projects: ["o2c-leakage-detection"],
           experience: ["biosoft"],
           contexts: ["academic"],
-          usedWith: ["SQL Server", "MySQL", "PostgreSQL", "Power BI"],
+          usedWith: ["SQL Server", "SQLite", "Power BI"],
         },
       },
       {

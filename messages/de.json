@@ -186,7 +186,7 @@
         "summary": "Klassische ML-Klassifikatoren für mein Spam-Erkennungssystem trainiert und evaluiert."
       },
       "dataanalytics": {
-        "summary": "Daten analysieren und interpretieren – in meinem Data-Analysis-Toolkit-Projekt, durch mein Data-Analytics-Praktikumszertifikat und im Big-Data-Studium."
+        "summary": "Daten analysieren und interpretieren – in meinem O2C-Leakage-Projekt, im Data-Analysis-Toolkit, durch mein Praktikumszertifikat und im Big-Data-Studium."
       },
       "pandas": {
         "summary": "Zur Bereinigung, Verknüpfung, Transformation und Analyse strukturierter Daten in Prognose- und Analyseworkflows eingesetzt."
@@ -198,10 +198,10 @@
         "summary": "Nach kontrolliertem Benchmarking als stärkstes Machine-Learning-Modell meiner ICE-Verspätungsprognose ausgewählt."
       },
       "powerbi": {
-        "summary": "Interaktive Business-Intelligence-Dashboards und klare, entscheidungsorientierte Datenvisualisierungen erstellen."
+        "summary": "Interaktive Business-Intelligence-Dashboards erstellen, darunter ein vierseitiger Order-to-Cash-Leakage-Report mit DSO- und Cash-Locked-Kennzahlen."
       },
       "sql": {
-        "summary": "Relationale Abfragen für Datenabruf, Transformation und anwendungsbezogene Analysen über verschiedene SQL-Plattformen schreiben."
+        "summary": "Relationale Abfragen für Datenabruf, Star-Schema-Modellierung und Prozessmetriken über verschiedene SQL-Plattformen schreiben."
       },
       "sqlserver": {
         "summary": "Relationale Datenspeicherung für Backend-APIs bei Biosoft Health Tech entworfen und integriert."
@@ -400,6 +400,92 @@
       "close": "Schließen"
     },
     "items": {
+      "o2c-leakage-detection": {
+        "title": "O2C Leakage Detection — Order-to-Cash Process Analytics",
+        "subtitle": "SQL- und Power-BI-Analyse von Rechnungsverszug, Streitfällen, Holds und verspätetem Zahlungseingang",
+        "description": "Eine Prozessanalyse, die den Order-to-Cash-Pfad abbildet und gebundenes Kapital durch Rechnungsverszug, Streitfälle, Holds und Zahlung nach Fälligkeit quantifiziert.",
+        "category": "Process Mining • SQL • Power BI",
+        "overview": "Ein durchgängiges Finance-Operations-Analyseprojekt, das den Cashflow von der Auftragsbestätigung bis zur Zahlung nachverfolgt. Mit QPR-O2C-Ereignisprotokollen und EZB-Wechselkursen modelliert es 91.746 Aufträge und 900.113 Ereignisse in SQL, kennzeichnet Leakage im Prozess und stellt DSO-Tage sowie gebundenes Kapital in einem vierseitigen Power-BI-Dashboard dar.",
+        "features": [
+          "O2C-Zeitlinie von Verkaufsauftrag über Warenausgang und Rechnung bis zur Zahlung",
+          "Leak-Kennzeichen für Rechnungsverszug, Streit/Nacharbeit, operative Holds und Zahlung nach Fälligkeit",
+          "DSO-Tage und gebundenes Kapital nach Kundensegment und Region",
+          "Star-Schema mit 100-prozentigem Sales-Order-Join und EZB-Währungsumrechnung",
+          "Vierseitiges Power-BI-Dashboard für Executive, Prozess, Leakage und Segmente",
+          "Dokumentierte Methode, Datenwörterbuch, Kennzahlen und Executive Brief"
+        ],
+        "architecture": [
+          {
+            "name": "Datenerfassung",
+            "description": "Lädt QPR-O2C-Case- und Event-CSVs zusammen mit historischen EZB-Wechselkursen in SQLite."
+          },
+          {
+            "name": "Star-Schema",
+            "description": "Bildet Fakten und Dimensionen um Sales Order ID, inklusive Leak-Flags und fehlender Folgedokumente."
+          },
+          {
+            "name": "Kennzahlenebene",
+            "description": "Berechnet DSO-Tage, gebundenes Kapital und Stufenlaufzeiten in SQL-Marts und einer O2C-Zeitlinien-View."
+          },
+          {
+            "name": "Reporting-Ebene",
+            "description": "Ein Power-BI-Star-Modell zeigt Executive-KPIs, Prozessmix, Leakage-Ranking und regionale Segmente."
+          }
+        ],
+        "stack": [
+          {
+            "label": "Daten & SQL",
+            "items": ["Python", "SQL", "SQLite", "Pandas"]
+          },
+          {
+            "label": "Analytik",
+            "items": ["Process Mining", "DSO", "Cash Locked", "Star Schema"]
+          },
+          {
+            "label": "Visualisierung",
+            "items": ["Power BI", "Executive Dashboard"]
+          },
+          {
+            "label": "Datenquellen",
+            "items": ["QPR-O2C-Logs", "EZB-Wechselkurse"]
+          }
+        ],
+        "modules": [
+          {
+            "name": "Load & Build",
+            "description": "Importiert CSVs, wendet Währungsumrechnung an und erzeugt die Analysedatenbank."
+          },
+          {
+            "name": "Leak-Flags",
+            "description": "Kennzeichnet Rechnungsverszug, Streitfälle, Holds und Zahlung nach vertraglicher Fälligkeit."
+          },
+          {
+            "name": "O2C-Zeitlinie",
+            "description": "Erstellt eine Zeile je Auftrag mit Prozessdaten von links nach rechts und Stufendauern."
+          },
+          {
+            "name": "Power-BI-Bericht",
+            "description": "Vier Seiten für Entscheider, Prozessmix, Leakage-Treiber und Segment-/Regionschnitte."
+          }
+        ],
+        "contributions": [
+          "Vollständigen O2C-Happy-Path und Ausnahmen über 91.746 Aufträge abgebildet.",
+          "SQL-Joins entworfen, die fehlende Rechnungen und verspäteten Zahlungseingang sichtbar lassen.",
+          "Cash-Leakage quantifiziert, darunter Zahlung nach Fälligkeit mit rund 96,9 Mio. €.",
+          "Vierseitiges Power-BI-Dashboard für AR Collections, Vertrieb und Operations aufgebaut.",
+          "Quellen, Datenwörterbuch, Kennzahlen, Grenzen und einen vierseitigen Executive Brief dokumentiert."
+        ],
+        "challenges": [
+          "Große Event- und Case-Logs so zu verbinden, dass unvollständige O2C-Dokumente erhalten bleiben.",
+          "Auftragswerte ohne explizite Währung im Quelldatensatz über EZB-Kurse umzurechnen.",
+          "Durchschnittliche DSO vom tatsächlich nach Fälligkeit gebundenen Kapital zu trennen."
+        ],
+        "outcomes": [
+          "Gezeigt, dass eine durchschnittliche DSO von 44 Tagen dennoch rund 97 Mio. € in verspäteten oder offenen Forderungen bindet.",
+          "Leakage nach Handlungsbedarf priorisiert: zuerst AR Collections, dann Streitfälle, dann operative Holds.",
+          "Ein reproduzierbares SQL-zu-Power-BI-Paket mit Methodennotizen und entscheidungsreifem Briefing geliefert."
+        ]
+      },
       "ice-train-delay-prediction": {
         "title": "ICE Train Delay Prediction — Machine Learning Forecasting Model",
         "subtitle": "Zeitbewusste Regressions-Pipeline zur Prognose von Verspätungen im ICE-Verkehr",

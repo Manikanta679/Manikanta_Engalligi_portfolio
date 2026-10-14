@@ -29,8 +29,15 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "ice-train-delay-prediction",
+    slug: "o2c-leakage-detection",
     status: "latest",
+    technologies: ["SQL", "Power BI", "Python", "SQLite", "Process Mining"],
+    github: "https://github.com/Manikanta679/o2c-leakage-detection",
+    image: "/images/projects/o2c-leakage-detection.svg",
+  },
+  {
+    slug: "ice-train-delay-prediction",
+    status: "completed",
     technologies: ["Python", "XGBoost", "LightGBM", "Scikit-learn", "Pandas"],
     github:
       "https://github.com/Manikanta679/ICE_Train_Delay_Prediction_Machine_Learning_Forecasting_Model-",
