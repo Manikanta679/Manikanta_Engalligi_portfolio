@@ -1167,6 +1167,16 @@
       "description": "Newly earned certifications will appear here as they're completed."
     },
     "items": {
+      "mastersTranscript": {
+        "title": "Master's Transcript of Records — First Semester",
+        "issuer": "SRH University",
+        "year": "2026"
+      },
+      "bscDegree": {
+        "title": "B.Sc. Computer Science — Degree Certificate",
+        "issuer": "Global Academy of Technology",
+        "year": "2025"
+      },
       "fullStackInternship": {
         "title": "Full Stack Development Internship",
         "issuer": "Biosoft Health Tech Pvt. Ltd.",

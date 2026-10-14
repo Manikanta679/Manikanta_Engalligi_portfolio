@@ -20,6 +20,16 @@ export function certificateUrl(filename: string): string {
 
 export const certifications: Certification[] = [
   {
+    id: "mastersTranscript",
+    tier: "primary",
+    certificateUrl: certificateUrl("Masters_Transcript_First_Semester.pdf"),
+  },
+  {
+    id: "bscDegree",
+    tier: "primary",
+    certificateUrl: certificateUrl("BSc_Degree_Certificate.pdf"),
+  },
+  {
     id: "fullStackInternship",
     tier: "primary",
     certificateUrl: certificateUrl("Mani_Internship_Certificate_Biosoft.pdf"),

@@ -1170,6 +1170,16 @@
       "description": "Neu erworbene Zertifikate erscheinen hier, sobald sie abgeschlossen sind."
     },
     "items": {
+      "mastersTranscript": {
+        "title": "Transcript of Records — Erstes Mastersemester",
+        "issuer": "SRH University",
+        "year": "2026"
+      },
+      "bscDegree": {
+        "title": "B.Sc. Computer Science — Abschlussurkunde",
+        "issuer": "Global Academy of Technology",
+        "year": "2025"
+      },
       "fullStackInternship": {
         "title": "Full-Stack-Entwicklung — Praktikum",
         "issuer": "Biosoft Health Tech Pvt. Ltd.",
