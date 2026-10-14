@@ -244,7 +244,7 @@ export const skillCategories: SkillCategory[] = [
             "ice-train-delay-prediction",
             "data-analysis-toolkit",
           ],
-          usedWith: ["Python", "NumPy", "Scikit-learn"],
+          usedWith: ["Python", "NumPy", "Scikit-learn", "SQL"],
         },
       },
       {
@@ -269,7 +269,7 @@ export const skillCategories: SkillCategory[] = [
         usage: {
           projects: ["o2c-leakage-detection"],
           contexts: ["academic"],
-          usedWith: ["SQL", "Data Analytics"],
+          usedWith: ["SQL", "Data Analytics", "Process Mining"],
         },
       },
       {
@@ -278,7 +278,15 @@ export const skillCategories: SkillCategory[] = [
         usage: {
           projects: ["o2c-leakage-detection", "data-analysis-toolkit"],
           contexts: ["academic"],
-          usedWith: ["Python", "SQL", "Power BI"],
+          usedWith: ["Python", "SQL", "Power BI", "Process Mining"],
+        },
+      },
+      {
+        key: "processmining",
+        name: "Process Mining",
+        usage: {
+          projects: ["o2c-leakage-detection"],
+          usedWith: ["SQL", "Power BI", "Python", "SQLite"],
         },
       },
       {
@@ -301,7 +309,15 @@ export const skillCategories: SkillCategory[] = [
           projects: ["o2c-leakage-detection"],
           experience: ["biosoft"],
           contexts: ["academic"],
-          usedWith: ["SQL Server", "SQLite", "Power BI"],
+          usedWith: ["SQL Server", "SQLite", "Power BI", "Process Mining"],
+        },
+      },
+      {
+        key: "sqlite",
+        name: "SQLite",
+        usage: {
+          projects: ["o2c-leakage-detection"],
+          usedWith: ["SQL", "Python", "Pandas", "Power BI"],
         },
       },
       {

@@ -200,8 +200,14 @@
       "powerbi": {
         "summary": "Building interactive business-intelligence dashboards, including a four-page Order-to-Cash leakage report with DSO-style and cash-locked metrics."
       },
+      "processmining": {
+        "summary": "Reconstructed the order-to-cash path from event logs, then quantified leakage across billing lag, disputes, holds and late collection."
+      },
       "sql": {
         "summary": "Writing relational queries for data retrieval, star-schema modelling and process-metric analysis across SQL platforms."
+      },
+      "sqlite": {
+        "summary": "Built the O2C analysis database as a SQLite star schema, joining case logs, events and ECB FX rates for SQL metrics."
       },
       "sqlserver": {
         "summary": "Designed and integrated relational data storage for backend APIs at Biosoft Health Tech."

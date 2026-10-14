@@ -200,8 +200,14 @@
       "powerbi": {
         "summary": "Interaktive Business-Intelligence-Dashboards erstellen, darunter ein vierseitiger Order-to-Cash-Leakage-Report mit DSO- und Cash-Locked-Kennzahlen."
       },
+      "processmining": {
+        "summary": "Den Order-to-Cash-Pfad aus Ereignisprotokollen rekonstruiert und Leakage durch Rechnungsverszug, Streitfälle, Holds und verspäteten Zahlungseingang quantifiziert."
+      },
       "sql": {
         "summary": "Relationale Abfragen für Datenabruf, Star-Schema-Modellierung und Prozessmetriken über verschiedene SQL-Plattformen schreiben."
+      },
+      "sqlite": {
+        "summary": "Die O2C-Analysedatenbank als SQLite-Star-Schema aufgebaut und Case-Logs, Ereignisse sowie EZB-Wechselkurse für SQL-Kennzahlen verbunden."
       },
       "sqlserver": {
         "summary": "Relationale Datenspeicherung für Backend-APIs bei Biosoft Health Tech entworfen und integriert."
